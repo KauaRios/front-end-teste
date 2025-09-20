@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafeteria GUILHERME GAY - Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div id="login-card">
+            <div class="card-header">
+                <h1>☕ Cafeteria GUILHERME GAY</h1>
+                <p>Faça login para ver nosso produto do dia!</p>
+            </div>
+
+            <form id="login-form" action="beckend aqui.php" method="POST">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" placeholder="Sua senha" required>
+                </div>
+                <button type="submit" class="btn">Entrar</button>
+            </form>
+        </div>
+
+        <div id="product-card" class="hidden">
+            <div class="card-header">
+                <h2>Bem-vindo de volta!</h2>
+                <p>Confira nossa oferta especial de hoje.</p>
+            </div>
+
+            <div class="product">
+                <img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="Xícara de Café Especial">
+                <h3>Expresso GUILHERME Cremoso</h3>
+                <p class="description">CAFE COM LEITINHO DA FORMA QUE O GULHERME ADORA
+                </p>
+                <p class="price">R$ 9,50</p>
+                <button id="buy-whatsapp-btn" class="btn btn-whatsapp">Pedir via WhatsApp</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        const loginForm = document.getElementById('login-form');
+        const loginCard = document.getElementById('login-card');
+        const productCard = document.getElementById('product-card');
+        const buyButton = document.getElementById('buy-whatsapp-btn');
+
+
+        loginForm.addEventListener('submit', function (event) {
+
+            event.preventDefault();
+
+
+            loginCard.classList.add('hidden');
+            productCard.classList.remove('hidden');
+        });
+
+
+        buyButton.addEventListener('click', function () {
+
+            const seuNumero = '5521999998888'; // Coloque seu número com 
+            const nomeProduto = 'Expresso Duplo Cremoso';
+            const precoProduto = 'R$ 9,50';
+            // --------------------
+
+            const mensagem = `Olá! Gostaria de pedir um ${nomeProduto} (${precoProduto}).`;
+
+
+            const mensagemCodificada = encodeURIComponent(mensagem);
+
+            const urlWhatsapp = `https://wa.me/${seuNumero}?text=${mensagemCodificada}`;
+            window.open(urlWhatsapp, '_blank');
+        });
+    </script>
+</body>
+
+</html>
